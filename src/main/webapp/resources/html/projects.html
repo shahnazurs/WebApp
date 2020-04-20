@@ -1,0 +1,41 @@
+<div class="view" data-ng-show="selectedProjectSection == 'view'">
+	<h3>
+		Project List<span style="float: right"> <a href="#"
+			class="btn btn-default btn-sm" data-ng-click="projectAdd()"> <span
+				class="glyphicon glyphicon-plus"></span> New Project
+		</a></span>
+	</h3>
+	<hr />
+
+	<ul data-ng-repeat="project in projects" class="list-group">
+		<li class="list-group-item" style="cursor: pointer">{{project.ln_no}}</li>
+	</ul>
+</div>
+<div class="add" data-ng-show="selectedProjectSection == 'add' ">
+	<h3>New Project</h3>
+	<hr />
+	<form>
+		<div class="form-group">
+			<label for="usr">Project Name:</label> <input type="text"
+				class="form-control" id="usr">
+		</div>
+		<div class="form-group">
+			<label for="emno">EM Number:</label> <input type="text"
+				class="form-control" id="emno">
+		</div>
+		<div class="form-group">
+			<label for="units">Units:</label> <input type="number"
+				class="form-control" id="units">
+		</div>
+		<div class="form-group">
+      <label for="sel1">Select list (select one):</label>
+      <select class="form-control" id="sel1" >
+      		<option data-ng-repeat="country in countries">{{country.name}}</option>
+      </select>
+    </div>
+		<input type="button" class="btn btn-default" value="Save Changes">
+		<input type="button" class="btn btn-default" value="Cancel"
+			data-ng-click="cancelProjectAdd()">
+	</form>
+
+</div>
