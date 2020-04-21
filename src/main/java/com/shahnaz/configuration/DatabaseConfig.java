@@ -32,7 +32,7 @@ public class DatabaseConfig {
 	@Autowired
 	Environment environment;
 	
-	@Bean
+	@Bean(name = "entityManagerFactory")
 	LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
 		lfb.setDataSource(dataSource());

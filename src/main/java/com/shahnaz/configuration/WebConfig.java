@@ -2,6 +2,7 @@ package com.shahnaz.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -15,6 +16,12 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	public WebConfig() {
 		System.out.println("************* WEB Configuration *********************");
 	}
+	
+	@Override
+    public void configureDefaultServletHandling(
+      DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

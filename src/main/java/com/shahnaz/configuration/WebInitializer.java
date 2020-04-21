@@ -25,7 +25,7 @@ public class WebInitializer implements WebApplicationInitializer{
 		ServletRegistration.Dynamic jerseyServlet = servletContext.addServlet("jerseyServlet", servletContainer);
 		jerseyServlet.setInitParameter("jersey.config.server.provider.packages", "com.shahnaz.ws");
 		jerseyServlet.addMapping("/rs/*");
-		jerseyServlet.setLoadOnStartup(1);
+		jerseyServlet.setLoadOnStartup(2);
 
 	}
 

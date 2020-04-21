@@ -1,41 +1,77 @@
 <div class="view" data-ng-show="selectedProjectSection == 'view'">
-	<h3>
-		Project List<span style="float: right"> <a href="#"
+	<h3>List of Projects</h3>
+	
+	<hr />
+	<div class="row">
+	<div class="col-sm-offset-4 col-sm-1"><b>Search:</b></div><div class="col-sm-3"><input type="text"
+					class="form-control input-sm" id="search" data-ng-model="searchedLN" placeholder="Search LN Here"></div>
+					<div class="col-sm-offset-2 col-sm-2"><span> <a href="#"
 			class="btn btn-default btn-sm" data-ng-click="projectAdd()"> <span
 				class="glyphicon glyphicon-plus"></span> New Project
-		</a></span>
-	</h3>
-	<hr />
-
-	<ul data-ng-repeat="project in projects" class="list-group">
+		</a></span></div>
+	</div>
+	<br/>
+<!-- 	<ul data-ng-repeat="project in projects" class="list-group">
 		<li class="list-group-item" style="cursor: pointer">{{project.ln_no}}</li>
-	</ul>
+	</ul> -->
+	<div data-ng-repeat="project in projects| filter : searchedLN">
+		<button type="button" class="btn btn-info col-sm-12" style="text-align: left; margin-bottom:5px;" data-toggle="collapse" data-target="#demo{{project.ln_no}}" data-ng-click="openStatus=!openStatus">{{project.ln_no}} - {{project.em_no}}<span class="glyphicon glyphicon-arrow-down" style="float:right" data-ng-show="openStatus"></span><span class="glyphicon glyphicon-arrow-up" data-ng-hide="openStatus" style="float:right"></span></button>
+		<div id="demo{{project.ln_no}}" class="collapse col-sm-12">
+		<div class="well" style="margin: 0 0 5px; padding: 15px;">
+	    <form data-ng-submit="updateProject()">
+			<div class="form-group">
+				<label for="usr">Project Name:</label> <input type="text"
+					class="form-control" id="usr" value={{project.project_name}} data-ng-model="usr">
+			</div>
+			<div class="form-group">
+				<label for="emno">EM Number:</label> <input type="text"
+					class="form-control" id="emno" value={{project.em_no}}>
+			</div>
+			<div class="form-group">
+				<label for="units">Units:</label> <input type="text"
+					class="form-control" id="units" value={{project.units}}>
+			</div>
+			<div class="form-group">
+	     	<label for="sel1">Country:</label>
+	      	<select class="form-control" id="sel1" >
+	      		<option data-ng-repeat="country in countries" value="{{country.code}}" data-ng-selected="project.country_code == country.code">{{country.name}}</option>
+	      	</select>
+	    	</div>
+			<input type="submit" class="btn btn-primary" value="Update Changes">
+		<!-- 	<input type="button" class="btn btn-default" value="Cancel"
+				data-ng-click="cancelProjectUpdate()"> -->
+		</form>
+		</div>
+	 	</div>
+	</div>
 </div>
 <div class="add" data-ng-show="selectedProjectSection == 'add' ">
 	<h3>New Project</h3>
 	<hr />
-	<form>
-		<div class="form-group">
-			<label for="usr">Project Name:</label> <input type="text"
-				class="form-control" id="usr">
-		</div>
-		<div class="form-group">
-			<label for="emno">EM Number:</label> <input type="text"
-				class="form-control" id="emno">
-		</div>
-		<div class="form-group">
-			<label for="units">Units:</label> <input type="number"
-				class="form-control" id="units">
-		</div>
-		<div class="form-group">
-      <label for="sel1">Select list (select one):</label>
-      <select class="form-control" id="sel1" >
-      		<option data-ng-repeat="country in countries">{{country.name}}</option>
-      </select>
-    </div>
-		<input type="button" class="btn btn-default" value="Save Changes">
-		<input type="button" class="btn btn-default" value="Cancel"
-			data-ng-click="cancelProjectAdd()">
-	</form>
+	<div class="well">
+		<form name="myForm" data-ng-submit="addProject()">
+			<div class="form-group">
+				<label for="pname">Project Name:</label> <input type="text"
+					class="form-control" id="pname" data-ng-model="pname">
+			</div>
+			<div class="form-group">
+				<label for="emno1">EM Number:</label> <input type="text"
+					class="form-control" id="emno1" data-ng-model="empno1">
+			</div>
+			<div class="form-group">
+				<label for="units1">Units:</label> <input type="text"
+					class="form-control" id="units1" data-ng-model="units1">
+			</div>
+			<div class="form-group">
+		      	<label for="ctry_cd1">Select Country (select one):</label>
+		      	<select class="form-control" id="ctry_cd1" data-ng-model="ctry_cd1">
+		      		<option data-ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
+		      	</select>
+	    	</div>
+			<input type="submit" class="btn btn-primary" value="Save Changes">
+			<input type="button" class="btn btn-default" value="Cancel"
+				data-ng-click="cancelProjectAdd()">
+		</form>
+	</div>
 
 </div>

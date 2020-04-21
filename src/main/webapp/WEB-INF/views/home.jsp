@@ -5,15 +5,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/main.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="resources/css/main.css" />
+    <script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
 
 <title>Home Page</title>
 
@@ -48,7 +45,7 @@
 			<div data-ng-include="'resources/html/staffs.html'">
 			</div>
 		</div>
-		<div data-ng-controller="staffsCtrl" data-ng-show="selectedMenu == 'projects'" class="projects">
+		<div data-ng-controller="projectsCtrl" data-ng-show="selectedMenu == 'projects'" class="projects">
 			<div data-ng-include="'resources/html/projects.html'">
 			</div>
 		</div>
@@ -58,4 +55,19 @@
 	<script src="resources/js/projectsCtrl.js"></script>
 	<script src="resources/js/staffsCtrl.js"></script>
 </body>
+<div class="footer">
+	<div class="container">
+	<div class="row">
+	<div class="col-sm-4">
+		<span class="copyright"> &copy; 2020 AG MELCO Elevator Co. L.L.C.</span>
+	</div>
+	<div class="col-sm-2 col-sm-offset-6">
+  <a href="https://www.facebook.com/ahamed.shahnaz" target="_blank"><i class="fa fa-facebook"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-google-plus"></i></a>
+  <a href="#"><i class="fa fa-twitch"></i></a>
+  </div>
+  </div>
+  </div>
+</div>
 </html>

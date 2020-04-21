@@ -17,6 +17,7 @@ public class Projects {
 	private String ln_no;
 	private String project_name;
 	private int units;
+	private String em_no;
 	@Column(name = "country_cd")
 	private int country_code;
 	public Integer getId() {
@@ -48,6 +49,12 @@ public class Projects {
 	}
 	public void setCountry_code(int country_code) {
 		this.country_code = country_code;
+	}
+	public String getEm_no() {
+		return em_no;
+	}
+	public void setEm_no(String em_no) {
+		this.em_no = em_no;
 	}
 	@Override
 	public String toString() {
