@@ -21,7 +21,7 @@
 	    <form data-ng-submit="updateProject()">
 			<div class="form-group">
 				<label for="usr">Project Name:</label> <input type="text"
-					class="form-control" id="usr" value={{project.project_name}} data-ng-model="usr">
+					class="form-control" id="usr" value={{project.project_name}}>
 			</div>
 			<div class="form-group">
 				<label for="emno">EM Number:</label> <input type="text"
@@ -49,22 +49,26 @@
 	<h3>New Project</h3>
 	<hr />
 	<div class="well">
-		<form name="myForm" data-ng-submit="addProject()">
+		<form data-ng-submit="addProject(projectForm)">
 			<div class="form-group">
-				<label for="pname">Project Name:</label> <input type="text"
-					class="form-control" id="pname" data-ng-model="pname">
+				<label for="ln_no">LN Number:</label> <input type="text"
+					class="form-control" id="ln_no" data-ng-model="projectForm.ln_no">
 			</div>
 			<div class="form-group">
-				<label for="emno1">EM Number:</label> <input type="text"
-					class="form-control" id="emno1" data-ng-model="empno1">
+				<label for="project_name">Project Name:</label> <input type="text"
+					class="form-control" id="project_name" data-ng-model="projectForm.project_name">
 			</div>
 			<div class="form-group">
-				<label for="units1">Units:</label> <input type="text"
-					class="form-control" id="units1" data-ng-model="units1">
+				<label for="em_no">EM Number:</label> <input type="text"
+					class="form-control" id="em_no" data-ng-model="projectForm.em_no">
 			</div>
 			<div class="form-group">
-		      	<label for="ctry_cd1">Select Country (select one):</label>
-		      	<select class="form-control" id="ctry_cd1" data-ng-model="ctry_cd1">
+				<label for="units">Units:</label> <input type="text"
+					class="form-control" id="units" data-ng-model="projectForm.units">
+			</div>
+			<div class="form-group">
+		      	<label for="country_code">Select Country (select one):</label>
+		      	<select class="form-control" id="country_code" data-ng-model="projectForm.country_code">
 		      		<option data-ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
 		      	</select>
 	    	</div>

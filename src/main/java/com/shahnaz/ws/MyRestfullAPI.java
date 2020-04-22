@@ -1,4 +1,4 @@
-package com.shahnaz.ws;
+/*package com.shahnaz.ws;
 
 import java.util.List;
 
@@ -30,14 +30,15 @@ public class MyRestfullAPI {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getProjects() {
 		System.out.println("-------------------");
-		/*try {
+		try {
 			List<Projects> proj = ps.getAllProjects();
 			System.out.println(proj.get(0));
 		}
 		catch(Exception e) {
 			System.out.println("Error: Message" + e.getMessage());
-		}*/
+		}
 		return "Welcome";
 		
 	}
 }
+*/
