@@ -17,30 +17,36 @@
 	<div data-ng-repeat="project in projects| filter : searchedLN">
 		<button type="button" class="btn btn-info col-sm-12" style="text-align: left; margin-bottom:5px;" data-toggle="collapse" data-target="#demo{{project.ln_no}}" data-ng-click="openStatus=!openStatus">{{project.ln_no}} - {{project.em_no}}<span class="glyphicon glyphicon-arrow-down" style="float:right" data-ng-show="openStatus"></span><span class="glyphicon glyphicon-arrow-up" data-ng-hide="openStatus" style="float:right"></span></button>
 		<div id="demo{{project.ln_no}}" class="collapse col-sm-12">
-		<div class="well" style="margin: 0 0 5px; padding: 15px;">
-	    <form data-ng-submit="updateProject()">
-			<div class="form-group">
-						<label for="usr" class="control-label col-sm-2">Project Name:</label>
-						<div class="col-sm-10"> 
-							<input type="text" class="form-control" id="usr" value={{project.project_name}} data-ng-model="usr">
+		<div class="well">
+	    <form class="form-horizontal" data-ng-submit="updateProject()" name="myForm_{{$index}}">
+					<div class="form-group">
+						<label for="project_name" class="control-label col-sm-2">Project Name:</label>
+						<div class="col-sm-6"> 
+							<input type="text" class="form-control" value={{project.project_name}}>
 						</div>
+							<div class="col-sm-offset-1 col-sm-2">
+			    			<input type="submit" class="btn btn-primary" value="Update Changes"/>
+			    		</div>
 					</div>
 					<div class="form-group">
 						<label for="emno" class="control-label col-sm-2">EM Number:</label>
-						<div class="col-sm-10"> 
-							<input type="text" class="form-control" id="emno" value={{project.em_no}}>
+						<div class="col-sm-4"> 
+							<input type="text" class="form-control" value={{project.em_no}}>
 						</div>
+							<div class="col-sm-offset-3 col-sm-2">
+			    			<input type="submit" class="btn btn-primary" value="Remove"/>
+			    		</div>
 					</div>
 					<div class="form-group">
 						<label for="units" class="control-label col-sm-2">Units:</label>
-						<div class="col-sm-10"> 
-							<input type="text" class="form-control" id="units" value={{project.units}}>
+						<div class="col-sm-1"> 
+							<input type="text" class="form-control" value={{project.units}}>
 						</div>
 					</div>
 					<div class="form-group">
 				     	<label for="sel1" class="control-label col-sm-2">Country:</label>
-				     	<div class="col-sm-10">
-					      	<select class="form-control" id="sel1" >
+				     	<div class="col-sm-4">
+					      	<select class="form-control" >
 					      		<option data-ng-repeat="country in countries" value="{{country.code}}" data-ng-selected="project.country_code == country.code">{{country.name}}</option>
 					      	</select>
 				      	</div>
@@ -54,32 +60,49 @@
 	<h3>New Project</h3>
 	<hr />
 	<div class="well">
-		<form data-ng-submit="addProject(projectForm)">
+		<form class="form-horizontal" data-ng-submit="addProject(projectForm)">
+					<div class="form-group">
+						<label for="ln_no" class="control-label col-sm-2">LN Number:</label>
+						<div class="col-sm-6"> 
+							<input type="text" class="form-control" id="ln_no" data-ng-model="projectForm.ln_no">
+						</div>
+					</div>
 			<div class="form-group">
-				<label for="ln_no">LN Number:</label> <input type="text"
-					class="form-control" id="ln_no" data-ng-model="projectForm.ln_no">
+						<label for="project_name" class="control-label col-sm-2">Project Name:</label>
+						<div class="col-sm-6"> 
+							<input type="text" class="form-control" id="project_name" data-ng-model="projectForm.project_name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="em_no" class="control-label col-sm-2">EM Number:</label>
+						<div class="col-sm-6"> 
+							<input type="text" class="form-control" id="em_no" data-ng-model="projectForm.em_no">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="units" class="control-label col-sm-2">Units:</label>
+						<div class="col-sm-2"> 
+							<input type="text" class="form-control" id="units" data-ng-model="projectForm.units">
+						</div>
+					</div>
+					<div class="form-group">
+				     	<label for="country_code" class="control-label col-sm-2">Country:</label>
+				     	<div class="col-sm-4">
+					      	<select class="form-control" id="country_code" data-ng-model="projectForm.country_code">
+					      		<option data-ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
+					      	</select>
+				      	</div>
+			    	</div>
+			
+	    	<div class="form-group">
+	    		<div class="col-sm-offset-2 col-sm-2">
+					<input type="submit" class="btn btn-primary" value="Save Changes">
+				</div>
+				<div class="col-sm-1">
+					<input type="button" class="btn btn-default" value="Cancel"	data-ng-click="cancelProjectAdd()">
+				</div>"
 			</div>
-			<div class="form-group">
-				<label for="project_name">Project Name:</label> <input type="text"
-					class="form-control" id="project_name" data-ng-model="projectForm.project_name">
-			</div>
-			<div class="form-group">
-				<label for="em_no">EM Number:</label> <input type="text"
-					class="form-control" id="em_no" data-ng-model="projectForm.em_no">
-			</div>
-			<div class="form-group">
-				<label for="units">Units:</label> <input type="text"
-					class="form-control" id="units" data-ng-model="projectForm.units">
-			</div>
-			<div class="form-group">
-		      	<label for="country_code">Select Country (select one):</label>
-		      	<select class="form-control" id="country_code" data-ng-model="projectForm.country_code">
-		      		<option data-ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
-		      	</select>
-	    	</div>
-			<input type="submit" class="btn btn-primary" value="Save Changes">
-			<input type="button" class="btn btn-default" value="Cancel"
-				data-ng-click="cancelProjectAdd()">
+			
 		</form>
 	</div>
 

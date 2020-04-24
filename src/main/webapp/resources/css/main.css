@@ -78,3 +78,12 @@ footer {
 	color: rgb(255,255,0);
 }
 
+.projects .add .well{
+	padding-top: 50px;
+}
+
+.projects .view .well{
+	margin: 0 0 5px; padding: 15px;
+	padding-top: 35px;
+}
+

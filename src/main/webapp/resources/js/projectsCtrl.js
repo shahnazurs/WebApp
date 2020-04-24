@@ -53,6 +53,7 @@ $scope.selectedProjectSection = 'view';
 	
 	
 	$scope.updateProject = function(){
+		alert(this.name);
 		alert($scope.myForm.pname);
 	};
 	
