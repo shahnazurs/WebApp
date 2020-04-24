@@ -13,17 +13,25 @@ $scope.selectedProjectSection = 'view';
 	                    {"code":4, "name": "Malaysia"},
 	                    ];
 	
+	$scope.projectTypes = [
+						{"id": 1, "name": "New Layout"},
+						{"id": 2, "name": "ARV"},
+						{"id": 3, "name": "Metics"}
+		
+					];
+	
 	$scope.projects = [];
-	$scope.projectForm = {};
 	
     _refreshProjectData();
 		
 	$scope.projectAdd = function(){
+		$scope.projectForm = {};
 		$scope.selectedProjectSection = 'add';
 	};
 	$scope.searchedLN = "";
 	$scope.openStatus=true;
 	$scope.cancelProjectAdd = function(){
+		$scope.projectForm = {};
 		$scope.selectedProjectSection = 'view';
 	};
 	//refreshProjects();

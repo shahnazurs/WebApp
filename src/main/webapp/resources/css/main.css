@@ -1,3 +1,14 @@
+
+.navbar-header .icon-bar{
+	background-color: yellow;
+}
+
+.navbar-header .navbar-toggle{
+	background-color: green;
+	float: left;
+	margin-left: 15px;
+
+	}
 .container.main {
 	padding:0px;
 	padding-top: 20px;
@@ -60,6 +71,7 @@ footer {
   padding: 10px 0;
 }
 .footer {
+	margin-top: 5px;
    position: fixed;
    left: 0;
    bottom: 0;
