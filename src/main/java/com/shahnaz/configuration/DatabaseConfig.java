@@ -22,12 +22,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:database.properties")
 public class DatabaseConfig {
 
+
+
 	private final String PROPERTY_DRIVER = "driver";
 	private final String PROPERTY_URL = "url";
 	private final String PROPERTY_USERNAME = "user";
 	private final String PROPERTY_PASSWORD = "password";
 	private final String PROPERTY_SHOW_SQL = "hibernate.show_sql";
 	private final String PROPERTY_DIALECT = "hibernate.dialect";
+	
+	public DatabaseConfig() {
+		System.out.println("************* Database Config ***************");
+	}
 	
 	@Autowired
 	Environment environment;
@@ -45,9 +51,12 @@ public class DatabaseConfig {
 	@Bean
 	DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		//System.out.println("***************" + environment.getProperty(PROPERTY_URL) + "*******************");
+		System.out.println("***************" + environment.getProperty(PROPERTY_URL) + "*******************");
+		System.out.println("***************" + environment.getProperty(PROPERTY_USERNAME) + "*******************");
+		System.out.println("***************" + environment.getProperty(PROPERTY_PASSWORD)+ "*******************");
 		ds.setUrl(environment.getProperty(PROPERTY_URL));
-		ds.setUsername(environment.getProperty(PROPERTY_USERNAME));
+		//ds.setUsername(environment.getProperty(PROPERTY_USERNAME));
+		ds.setUsername("root");
 		ds.setPassword(environment.getProperty(PROPERTY_PASSWORD));
 		ds.setDriverClassName(environment.getProperty(PROPERTY_DRIVER));
 		return ds;

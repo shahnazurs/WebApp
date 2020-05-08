@@ -19,6 +19,12 @@
 		<div id="demo{{project.ln_no}}" class="collapse col-sm-12">
 		<div class="well">
 	    <form class="form-horizontal" data-ng-submit="updateProject()" name="myForm_{{$index}}">
+	    			<div class="form-group">
+						<label for="ln_no" class="control-label col-sm-2">LN Number:</label>
+						<div class="col-sm-4"> 
+							<input type="text" class="form-control" value="{{project.ln_no}}">
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="project_name" class="control-label col-sm-2">Project Name:</label>
 						<div class="col-sm-6"> 
@@ -33,6 +39,14 @@
 
 						</div>
 					</div>
+					<div class="form-group">
+				     	<label for="project_type" class="control-label col-sm-2">Job Type:</label>
+				     	<div class="col-sm-4">
+					      	<select class="form-control">
+					      		<option data-ng-repeat="jType in jobTypes" value="{{jType.id}}" data-ng-selected="jType.id == project.jobType">{{jType.jobType}}</option>
+					      	</select>
+				      	</div>
+			    	</div>
 					<div class="form-group">
 						<label for="units" class="control-label col-sm-2">Units:</label>
 						<div class="col-sm-1"> 
@@ -52,7 +66,7 @@
 			    			<input type="submit" class="btn btn-primary" value="Update Changes"/>
 			    		</div>
 							<div class="col-sm-2">
-			    			<input type="submit" class="btn btn-primary" value="Remove"/>
+			    			<input type="submit" class="btn btn-primary" value="Remove Project"/>
 			    		</div>
 			    	</div>
 		</form>
@@ -65,9 +79,23 @@
 	<hr />
 	<div class="well">
 		<form class="form-horizontal" data-ng-submit="addProject(projectForm)">
+		<div class="form-group">
+						<label for="ln_no" class="control-label col-sm-2">Date Received:</label>
+						<!-- <div class="col-sm-2"> 
+							<input type="date" data-ng-model="projectForm.date_received" class="form-control" value="{{date}}" max="{{today}}">
+						</div> -->
+						 <div class="col-sm-2">
+					        <p class="input-group">
+					          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" data-ng-model="projectForm.date_received" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+					          <span class="input-group-btn">
+					            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+					          </span>
+					        </p>
+      					</div>
+					</div>
 					<div class="form-group">
 						<label for="ln_no" class="control-label col-sm-2">LN Number:</label>
-						<div class="col-sm-6"> 
+						<div class="col-sm-4"> 
 							<input type="text" class="form-control" id="ln_no" data-ng-model="projectForm.ln_no">
 						</div>
 					</div>
@@ -79,15 +107,15 @@
 					</div>
 					<div class="form-group">
 						<label for="em_no" class="control-label col-sm-2">EM Number:</label>
-						<div class="col-sm-6"> 
+						<div class="col-sm-4"> 
 							<input type="text" class="form-control" id="em_no" data-ng-model="projectForm.em_no">
 						</div>
 					</div>
 					<div class="form-group">
 				     	<label for="project_type" class="control-label col-sm-2">Project Type:</label>
 				     	<div class="col-sm-4">
-					      	<select class="form-control" id="project_type" data-ng-model="projectForm.project_type">
-					      		<option data-ng-repeat="projectType in projectTypes" value="{{projectType.id}}">{{projectType.name}}</option>
+					      	<select class="form-control" id="project_type" data-ng-model="projectForm.job_type_id">
+					      		<option data-ng-repeat="jType in jobTypes" value="{{jType.id}}">{{jType.jobType}}</option>
 					      	</select>
 				      	</div>
 			    	</div>

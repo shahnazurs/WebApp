@@ -11,12 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shahnaz.model.Project;
+import com.shahnaz.model.ProjectType;
 import com.shahnaz.service.ProjectService;
+import com.shahnaz.service.ProjectTypeService;
 
 @RestController
 public class ProjectController {
 	@Autowired
 	ProjectService projectService;
+	
+	@Autowired
+	ProjectTypeService projectTypeService;
+	
+	/* Projects Endpoints */
 	
 	@RequestMapping(value = "/api/projects", method = RequestMethod.GET, headers = "Accept=application/json", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Project> getAllProjects(){
@@ -44,5 +51,13 @@ public class ProjectController {
 	public Project updateCountry(@RequestBody Project project) {
 		return projectService.updateProject(project);
  
+	}
+	
+	/* Project Types Endpoints */
+	
+	@RequestMapping(value = "/api/jobTypes", method = RequestMethod.GET, headers = "Accept=application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<ProjectType> getAllProjectTypes(){
+		System.out.println(projectTypeService.getAllProjectTypes());
+		return projectTypeService.getAllProjectTypes();
 	}
 }
