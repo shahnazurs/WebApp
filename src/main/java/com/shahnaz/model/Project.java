@@ -2,7 +2,7 @@ package com.shahnaz.model;
 
 
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="project_details")
@@ -30,6 +28,23 @@ public class Project {
 	private int country_code;
 	@Column(name = "date_received")
 	private Date dateReceived;
+	
+	
+	
+	public Project() {
+	}
+	
+	public Project(String ln_no, String project_name, String em_no, int jobType, int units, int country_code,
+			Date dateReceived) {
+		this.ln_no = ln_no;
+		this.project_name = project_name;
+		this.em_no = em_no;
+		this.jobType = jobType;
+		this.units = units;
+		this.country_code = country_code;
+		this.dateReceived = dateReceived;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -81,8 +96,10 @@ public class Project {
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", ln_no=" + ln_no + ", project_name=" + project_name + ", em_no=" + em_no
-				+ ", jobType=" + jobType + ", units=" + units + ", country_code=" + country_code + "]";
+				+ ", jobType=" + jobType + ", units=" + units + ", country_code=" + country_code + ", dateReceived="
+				+ dateReceived + "]";
 	}
+	
 
 	
 

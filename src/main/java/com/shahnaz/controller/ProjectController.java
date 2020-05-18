@@ -30,14 +30,14 @@ public class ProjectController {
 		return projectService.getAllProjects();
 	}
 	
-	@RequestMapping(value = "/api/project/add", method = RequestMethod.POST, headers = "Accept=application/json")
-	public Project addCountry(@RequestBody Project project) {
-		System.out.println(project);
+	@RequestMapping(value = "/api/project/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Project addProject(@RequestBody Project project) {
+		System.out.println("Object received**************"+ project);
 		return projectService.addProject(project);
 	}
 	
 	@RequestMapping(value = "/api/project/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-	public void deleteCountry(@PathVariable("id") int id) {
+	public void deleteProject(@PathVariable("project_id") int id) {
 		projectService.deleteProject(id);
  
 	} 
@@ -52,6 +52,8 @@ public class ProjectController {
 		return projectService.updateProject(project);
  
 	}
+	
+	
 	
 	/* Project Types Endpoints */
 	

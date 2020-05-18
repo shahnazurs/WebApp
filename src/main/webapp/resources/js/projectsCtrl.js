@@ -73,6 +73,7 @@ $scope.selectedProjectSection = 'view';
 		  
 	$scope.addProject=function(projectForm){
 		var sss = JSON.stringify(projectForm);
+		console.log(sss);
 		angular.forEach(sss, function(value, key){
 			console.log("Date Received " + value.date_received);
 			  /*value.startTime = new Date(value.startTime);
@@ -87,6 +88,26 @@ $scope.selectedProjectSection = 'view';
                 'Content-Type' : 'application/json'
             }
         }).then( _success, _error );
+	};
+	
+	$scope.removeProject = function(project_id){
+		$http.delete('/api/project/delete', project_id).then(function (response) {
+
+			if (response.data)
+
+			$scope.msg = "Data Deleted Successfully!";
+
+			}, function (response) {
+
+			$scope.msg = "Service not Exists";
+
+			$scope.statusval = response.status;
+
+			$scope.statustext = response.statusText;
+
+			$scope.headers = response.headers();
+
+			});
 	};
 	
 	
